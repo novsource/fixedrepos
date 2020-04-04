@@ -10,8 +10,8 @@ namespace WindowsFormsApp3
     public class Complex
     {
         private string value; //комплексное число
-        private int real; //действительная часть
-        private int suppose; //мнимая часть
+        private float real; //действительная часть
+        private float suppose; //мнимая часть
 
         public Complex (string complex)
         {
@@ -21,19 +21,19 @@ namespace WindowsFormsApp3
         }
 
         //Поиск действительной части
-        public int RealInComplex(string value)
+        public float RealInComplex(string value)
         {
                 value = value.Replace(" ", "");
 
                 var realArr = Regex.Split(value, @".?\d[i]");
 
-                var real = 0;
+                float real = 0;
 
                 foreach(var digit in realArr)
                 {
-                    if (int.TryParse(digit, out int check))
+                    if (float.TryParse(digit, out float check))
                     {
-                        real = int.Parse(digit);
+                        real = float.Parse(digit);
                     }
                 }
                 return real;          
@@ -96,7 +96,6 @@ namespace WindowsFormsApp3
             return Result;
         }
          
-
         public static Complex operator *(Complex z1, Complex z2)
         {
             var newReal = ((z1.real*z2.real) - (z1.suppose * z2.suppose));

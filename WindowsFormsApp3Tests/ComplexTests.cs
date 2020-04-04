@@ -25,8 +25,8 @@ namespace WindowsFormsApp3.Tests
         [TestMethod()]
         public void RealInComplexTest2()
         {
-            var str1 = "3i-5";
-            var str2 = "3i-5";
+            var str1 = "3i-5.3";
+            var str2 = "3i-5.8";
 
             var complex1 = new Complex(str1);
             var complex2 = new Complex(str2);
