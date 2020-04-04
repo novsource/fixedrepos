@@ -41,7 +41,7 @@ namespace WindowsFormsApp3.Tests
         [TestMethod()]
         public void RealInComplexTest3()
         {
-            var str1 = "3-5i";
+            var str1 = "3-5iф";
             var str2 = "3i-5";
 
             var complex1 = new Complex(str1);
@@ -49,9 +49,9 @@ namespace WindowsFormsApp3.Tests
 
             var error = complex1.CheckSuppose();
 
-            Console.Write(error);
-
-           
+            Assert.AreEqual(true, error);
         }
+
+        
     }
 }
