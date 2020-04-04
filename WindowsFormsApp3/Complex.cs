@@ -42,13 +42,21 @@ namespace WindowsFormsApp3
         //Поиск мнимой части
         public int SupposeInComplex(string value) 
         {
-                value = value.Replace(" ", ""); //убираем все пробелы
+            value = value.Replace(" ", ""); //убираем все пробелы
 
-                var supposeArr = value.ToCharArray(); //разбиваем выражение на массив символов
+            var supposeArr = value.ToCharArray(); //разбиваем выражение на массив символов
 
-                var real = 0;
+            var real = 0;
 
-                for (int i = 0; i < supposeArr.Length; i++) //цикл в котором ищем i и берем число, которое стоит перед ним
+            var regex = new Regex(@"(?(?=[a-z]|[а-я])[^i]|^$)");
+            var matchesFirst = regex.Matches(value);
+
+            if (matchesFirst.Count != 0)
+            {
+                return 0;
+            }
+
+            for (int i = 0; i < supposeArr.Length; i++) //цикл в котором ищем i и берем число, которое стоит перед ним
                 {
                     if (supposeArr[i] == 'i')
                     {

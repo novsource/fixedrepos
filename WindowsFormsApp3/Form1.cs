@@ -156,7 +156,7 @@ namespace WindowsFormsApp3
             var SecondComplex = new Complex(SecondComplexTxt.Text);
 
             //Проверяем на лишние символы
-            //если встречаются символы (от a до z) или (от а до я) и это не i, то говорим что плохо иначе возращаем пустую строку
+            //если встречаются символы (от a до z) или (от а до я) и это не i, то говорим что это плохо иначе возращаем пустую строку
             var regex = new Regex(@"(?(?=[a-z]|[а-я])[^i]|^$)"); 
             var matchesFirst = regex.Matches(FirstComplexTxt.Text);
             var matchesSecond = regex.Matches(SecondComplexTxt.Text);
