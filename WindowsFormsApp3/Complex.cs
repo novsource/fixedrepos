@@ -176,6 +176,20 @@ namespace WindowsFormsApp3
             return Result;
         }
 
+        public override bool Equals(object obj)
+        {
+            var Complex = obj as Complex;
+
+            if (Complex == null)
+            {
+                return false;
+            }
+
+            if (this.real != Complex.real || this.suppose != Complex.suppose)
+                return false;
+            return true;
+        }
+
 
         public bool CheckSuppose()
         {
