@@ -9,13 +9,11 @@ namespace WindowsFormsApp3
 {
     public class Complex
     {
-        private string value; //комплексное число
         private double real; //действительная часть
         private double suppose; //мнимая часть
 
         public Complex (string complex)
         {
-            this.value = complex;
             this.real = RealInComplex(complex);
             this.suppose = SupposeInComplex(complex);
         }
