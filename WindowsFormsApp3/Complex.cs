@@ -97,7 +97,7 @@ namespace WindowsFormsApp3
 
             var newSuppose = z1.suppose - z2.suppose;
 
-            var Result = ResultAction(newReal, newSuppose);
+            var Result = new Complex(newReal, newSuppose);
 
             return Result;
         }
@@ -108,7 +108,7 @@ namespace WindowsFormsApp3
 
             var newSuppose = ((z1.suppose * z2.real) + (z1.real * z2.suppose));
 
-            var Result = ResultAction(newReal, newSuppose);
+            var Result = new Complex(newReal, newSuppose);
 
             return Result;
         }  
@@ -119,7 +119,7 @@ namespace WindowsFormsApp3
 
             var newSuppose = (((z1.suppose * z2.real) - (z1.real * z2.suppose)) / (Math.Pow(z2.real, 2) + Math.Pow(z2.suppose,2)));
 
-            var Result = ResultAction(newReal, newSuppose);
+            var Result = new Complex(newReal, newSuppose);
 
             return Result;
         }
@@ -156,21 +156,6 @@ namespace WindowsFormsApp3
 
         //Приведение результатов действий над комплексными числами в формат 
        
-        public static Complex ResultAction(double newReal, double newSuppose)
-        {
-            string complex = "";
-
-            complex += newReal.ToString();
-
-            if (newSuppose >= 0)
-                complex += "+";
-
-            complex += newSuppose.ToString() + "i";
-
-            var Result = new Complex(complex);
-
-            return Result;
-        }
 
         public override bool Equals(object obj)
         {
