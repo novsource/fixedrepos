@@ -138,7 +138,7 @@ namespace WindowsFormsApp3
                         AnswerTxt.Text = Result.Print();
                         break;
                     case "<=":
-                        AnswerTxt.Text = Result.ComplexComparison(FirstComplex, SecondComplex);
+                        AnswerTxt.Text = FirstComplex < SecondComplex;
                         break;
                 }
                 

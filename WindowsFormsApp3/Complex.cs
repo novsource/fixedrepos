@@ -122,13 +122,13 @@ namespace WindowsFormsApp3
             return Result;
         }
 
-        //Метод для сравнения двух комплексных чисел
-        public string ComplexComparison(Complex z1, Complex z2)
+        public static string operator <(Complex z1, Complex z2)
         {
-            if (z1.real == z2.real && z1.suppose == z2.suppose) { //комплексные числа равны только в том случае, если равны их мнимые и дейст. части
-                return "z1 равен z2"; 
+            if (z1.real == z2.real && z1.suppose == z2.suppose)
+            { //комплексные числа равны только в том случае, если равны их мнимые и дейст. части
+                return "z1 равен z2";
             }
-            else if (z1.suppose < z2.suppose && z1.real == z2.real) 
+            else if (z1.suppose < z2.suppose && z1.real == z2.real)
             {
                 return "z2 больше z1";
             }
@@ -136,11 +136,28 @@ namespace WindowsFormsApp3
             {
                 return "z1 больше z2";
             }
+            else if (z1.suppose == z2.suppose && z1.real > z2.real)
+            {
+                return "z1 больше z2";
+            }
+            else if (z1.suppose == z2.suppose && z1.real < z2.real)
+            {
+                return "z2 больше z1";
+            }
             else
             {
                 return "Сравнение не имеет смысла"; //в противном случае сравнение не имеет смысла
             }
+    
         }
+
+        public static string operator >(Complex z1, Complex z2)
+        {
+            return z2 < z1;
+        }
+
+        //Метод для сравнения двух комплексных чисел
+        
 
         public string Print()
         {
@@ -172,9 +189,7 @@ namespace WindowsFormsApp3
 
         public bool CheckSuppose()
         {
-            var complex = new Complex(this.value);
-
-            if (complex.suppose == 0)
+            if (this.suppose == 0)
                 return true;
             else
                 return false;
