@@ -10,14 +10,20 @@ namespace WindowsFormsApp3
     public class Complex
     {
         private string value; //комплексное число
-        private float real; //действительная часть
-        private float suppose; //мнимая часть
+        private double real; //действительная часть
+        private double suppose; //мнимая часть
 
         public Complex (string complex)
         {
             this.value = complex;
             this.real = RealInComplex(complex);
             this.suppose = SupposeInComplex(complex);
+        }
+
+        public Complex (double real, double suppose)
+        {
+            this.real = real;
+            this.suppose = suppose;
         }
 
         //Поиск действительной части
@@ -79,7 +85,7 @@ namespace WindowsFormsApp3
 
             var newSuppose = z1.suppose + z2.suppose;
 
-            var Result = ResultAction(newReal, newSuppose);
+            var Result = new Complex(newReal, newSuppose);
 
             return Result;
         }
@@ -134,42 +140,32 @@ namespace WindowsFormsApp3
             }
             else
             {
-                return "Сравнение не имеет значения"; //в противном случае сравнение не имеет смысла
+                return "Сравнение не имеет смысла"; //в противном случае сравнение не имеет смысла
             }
         }
 
         public string Print()
         {
-            return String.Format(this.value + "i");
+            var str = "";
+            if (this.suppose >= 0) 
+            {
+                str = "+";
+            }
+            return String.Format("{0}"+ str +"{1}i", this.real, this.suppose);
         }
 
         //Приведение результатов действий над комплексными числами в формат 
-        public static Complex ResultAction(int newReal, int newSuppose)
-        {
-            string complex = "";
-
-            complex += newReal.ToString();
-
-            if (newSuppose > 0 || newSuppose == 0)
-                complex += "+";
-
-            complex += newSuppose.ToString();
-
-            var Result = new Complex(complex);
-
-            return Result;
-        }
-
+       
         public static Complex ResultAction(double newReal, double newSuppose)
         {
             string complex = "";
 
             complex += newReal.ToString();
 
-            if (newSuppose > 0 || newSuppose == 0)
+            if (newSuppose >= 0)
                 complex += "+";
 
-            complex += newSuppose.ToString();
+            complex += newSuppose.ToString() + "i";
 
             var Result = new Complex(complex);
 

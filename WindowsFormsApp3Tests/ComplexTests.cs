@@ -59,5 +59,12 @@ namespace WindowsFormsApp3.Tests
             var с2 = new Complex("3-5i");
             Assert.AreEqual(с1, с2);
         }
+
+        [TestMethod()]
+        public void RealInComplexTest32()
+        {
+            var str1 = "3-5i";
+            Assert.AreEqual(str1, new Complex(str1).Print());
+        }
     }
 }
